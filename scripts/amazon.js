@@ -1,3 +1,4 @@
+import {cart} from '../data/card.js';
 
 let productsHTML = ``;
 
