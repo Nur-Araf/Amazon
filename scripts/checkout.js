@@ -4,9 +4,7 @@ import {formatCurrency} from './utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption} from '../data/deliveryOptions.js';
 import { renderPaymentSummary } from './checkout/paymentSummary.js';
- const today = dayjs();
- const deliveryDate = today.add(7, `days`);
- console.log(deliveryDate.format('dddd, MMMM D'));
+
 
 
 function renderOrderSummary() {
@@ -130,6 +128,8 @@ function renderOrderSummary() {
                 const container = document.querySelector(`.js-cart-item-container-${productId}`);
                 container.remove();
                 updateCartQuantity();
+
+                renderPaymentSummary(); // regenerate the data when delete btn click
             });
         });
 
@@ -180,10 +180,12 @@ function renderOrderSummary() {
                 const {productId, deliveryOptionId} = element.dataset;
 
                 updateDeliveryOption(productId, deliveryOptionId);
-            })
-        })
+                renderOrderSummary();
+                renderPaymentSummary();
+            });
+        });
 
-    }   
+    };  
     
     renderOrderSummary();
 
