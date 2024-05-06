@@ -4,7 +4,7 @@ import {formatCurrency} from './utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption} from '../data/deliveryOptions.js';
 import { renderPaymentSummary } from './checkout/paymentSummary.js';
-
+import '../data/cart-oop.js'
 
 
 function renderOrderSummary() {
